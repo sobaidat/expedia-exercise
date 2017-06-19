@@ -49,10 +49,9 @@ public class ControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
-		HttpSession session = request.getSession();
-		HashMap<String, Hotel> hotels = (HashMap<String, Hotel>) session.getAttribute("hotels");
-
 		if ("/Hotel".equals(servletPath)) {
+			HashMap<String, Hotel> hotels = (HashMap<String, Hotel>) request.getSession().getAttribute("hotels");
+			
 			if(hotels!=null && hotels.containsKey(request.getParameter("hotelId"))){
 				request.setAttribute("hotel", hotels.get(request.getParameter("hotelId")));
 				request.getRequestDispatcher(Pages.HOTEL).forward(request, response);
@@ -77,11 +76,8 @@ public class ControllerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			//if(hotels == null)
-			{
-				
-				request.getSession().setAttribute("hotels", HotelUtil.getHotels(apiResponse));
-			}
+			
+			request.getSession().setAttribute("hotels", HotelUtil.getHotels(apiResponse));		
 			
 			request.getRequestDispatcher(Pages.HOTELS).forward(request, response);
 		}
