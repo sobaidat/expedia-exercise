@@ -2,6 +2,8 @@ package com.expedia.configuration;
 
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.expedia.model.HotelsApiUrl;
 
 public class ApiConfig {
@@ -15,13 +17,19 @@ public class ApiConfig {
 		hotelsApiUrl.setScenario(prop.getProperty("offers.api.scenario"));
 		hotelsApiUrl.setPage(prop.getProperty("offers.api.page"));
 		hotelsApiUrl.setUid(prop.getProperty("offers.api.uid"));
-		hotelsApiUrl.setProductType(prop.getProperty("offers.api.productType"));
+		hotelsApiUrl.setProductType(prop.getProperty("offers.api.productType"));		
 	}
 	
-	public static HotelsApiUrl getHotelsApiUrl() throws Exception {
+	public static HotelsApiUrl getHotelsApiUrl(String...params) throws Exception {
 		if(hotelsApiUrl == null)
 			throw new Exception("Api Configurations not initialized");
 		
-		return hotelsApiUrl;
+		StringBuffer otherQuery = new StringBuffer();
+		for(int i=0; i < params.length-1; i++){
+			otherQuery.append("&").append(params[i]).append("=").append(params[i+1]);
+		}
+		hotelsApiUrl.setOther(otherQuery.toString());
+		
+		return hotelsApiUrl ;
 	}
 }

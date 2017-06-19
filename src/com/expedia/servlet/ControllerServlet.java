@@ -1,6 +1,8 @@
 package com.expedia.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,13 +64,22 @@ public class ControllerServlet extends HttpServlet {
 			String apiResponse = "";
 			try {
 				// Call get method of url
-				apiResponse = apiRequest.get(ApiUtil.getHotelsUrl());
+				Enumeration<String> paramNames = request.getParameterNames();
+				List<String> params = new ArrayList<>();
+				while(paramNames.hasMoreElements()){
+					String param = paramNames.nextElement();
+					params.add(param);
+					params.add(request.getParameter(param));
+				}
+				apiResponse = apiRequest.get(ApiUtil.getHotelsUrl(params.toArray(new String[params.size()])));
 			} catch (Exception e) {
 				response.getWriter().println(e.getMessage());
 				e.printStackTrace();
 			}
 
-			if(hotels == null){
+			//if(hotels == null)
+			{
+				
 				request.getSession().setAttribute("hotels", HotelUtil.getHotels(apiResponse));
 			}
 			

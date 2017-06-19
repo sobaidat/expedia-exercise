@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.expedia.util.StringUtil;
 
 /**
@@ -27,7 +29,7 @@ public class ApiRequest {
 		HttpURLConnection httpcon= null;
 		BufferedReader inreader = null;
 
-		try {
+		try {			
 			httpcon = getHttpConnection(url);
 			httpcon.setRequestMethod("GET");
 			httpcon.connect();

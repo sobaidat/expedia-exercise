@@ -12,7 +12,8 @@ public class HotelsApiUrl {
 	private String page;
 	private String uid;
 	private String productType;
-
+	private String other;
+	
 	public String getBaseUrl() {
 		return baseUrl;
 	}
@@ -52,9 +53,13 @@ public class HotelsApiUrl {
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
+	
+	public void setOther(String other){
+		this.other = other;
+	}
 
 	@Override
 	public String toString() {
-		return baseUrl + "?scenario=" + scenario + "&page=" + page + "&uid=" + uid + "&productType=" + productType;
+		return baseUrl + "?scenario=" + scenario + "&page=" + page + "&uid=" + uid + "&productType=" + productType + other;
 	}
 }

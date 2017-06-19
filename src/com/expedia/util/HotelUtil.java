@@ -3,6 +3,8 @@ package com.expedia.util;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.expedia.model.hotel.Hotel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
