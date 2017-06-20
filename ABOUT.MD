@@ -2,6 +2,7 @@
 i only created to patterns urls (/Hotels and /Hotel):
 
 /Hotels: 
+
   1- Initate a ApiRequest object and passes the Offers Api Url with any extra parameters, 
       and calls a get method, the respone of ApiRequest will be json string that then will be pass
       to HotelUtil method helper to generate for us a list of hotel objects 
@@ -11,6 +12,7 @@ i only created to patterns urls (/Hotels and /Hotel):
       all hotels returned from Api Call
       
 /Hotel: 
+
   1- Get invidual hotel object from session
   
   2- Returns a page (WebContent/hotels.jsp) passing the hotel object as an attriubte of the page and render the hotel info
