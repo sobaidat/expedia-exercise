@@ -16,6 +16,7 @@ import com.expedia.configuration.ApiConfig;
 import com.expedia.model.hotel.Hotel;
 import com.expedia.util.ApiUtil;
 import com.expedia.util.HotelUtil;
+import com.expedia.util.ServletUtil;
 
 /**
  * Servlet implementation class Offers
@@ -60,23 +61,15 @@ public class ControllerServlet extends HttpServlet {
 																// Request
 			String apiResponse = "";
 			try {
-				// Call get method of url
-				Enumeration<String> paramNames = request.getParameterNames();
-				List<String> params = new ArrayList<>();
-				while(paramNames.hasMoreElements()){
-					String param = paramNames.nextElement();
-					params.add(param);
-					params.add(request.getParameter(param));
-				}
-				apiResponse = apiRequest.get(ApiUtil.getHotelsUrl(params.toArray(new String[params.size()])));
+				// Call get method of url				
+				apiResponse = apiRequest.get(ApiUtil.getHotelsUrl(ServletUtil.getParameters(request)));
 			} catch (Exception e) {
 				response.getWriter().println(e.getMessage());
 				e.printStackTrace();
 			}
 
 			
-			request.getSession().setAttribute("hotels", HotelUtil.getHotels(apiResponse));		
-			
+			request.getSession().setAttribute("hotels", HotelUtil.getHotels(apiResponse));					
 			request.getRequestDispatcher(Pages.HOTELS).forward(request, response);
 		}
 	}

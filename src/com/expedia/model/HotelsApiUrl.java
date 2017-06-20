@@ -1,5 +1,7 @@
 package com.expedia.model;
 
+import java.util.HashSet;
+
 /**
  * a model class to hold api request configurations
  * 
@@ -13,7 +15,16 @@ public class HotelsApiUrl {
 	private String uid;
 	private String productType;
 	private String other;
+	private HashSet<String> allowedParameters;
 	
+	public HashSet<String> getAllowedParameters() {
+		return allowedParameters;
+	}
+
+	public void setAllowedParameters(HashSet<String> allowedParameters) {
+		this.allowedParameters = allowedParameters;
+	}
+
 	public String getBaseUrl() {
 		return baseUrl;
 	}

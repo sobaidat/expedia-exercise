@@ -8,6 +8,7 @@
 <title>Hotels</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 body {
     padding: 20px;
@@ -109,18 +110,20 @@ body {
 .half-heart:after {
     content: "\e143"; /* put here icon-empty code*/
 }
+
+
 </style>
 </head>
 <body>
 <%
 	HashMap<String, Hotel> hotels = (HashMap<String,Hotel>)request.getSession().getAttribute("hotels");
 %>
-
 <div class="container">
 	<div class="row">
 		<h4>Hotels Offers From <a href="https://offersvc.expedia.com/">Expedia</a></h4>
 	</div>
     <hr>
+	
     <% 
     	int count = 1;
     	for (Map.Entry<String, Hotel> entry : hotels.entrySet()) {
@@ -143,7 +146,7 @@ body {
 	                            </div>	                            
 	                            <div class="lib-row lib-desc">
 	                               		<%=hotel.hotelInfo.hotelLongDestination %>
-	                            	</div>
+	                            </div>
 	                            <hr>
 	                            <div class="lib-row">
 				                    <div class="col-xs-12 text-center">
@@ -176,7 +179,7 @@ body {
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="col-md-1"></div>            
+	            <div class="col-md-2"></div>            
 	       <% if(count % 2 == 0) {%> 
 	       		</div>
 	    	<% } %>
