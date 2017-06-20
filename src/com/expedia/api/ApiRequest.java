@@ -12,7 +12,7 @@ import com.expedia.util.StringUtil;
 
 /**
  * 
- * @author Sulaiman-PC
+ * @author sleman.obaidat@gmail.com
  *
  */
 public class ApiRequest {

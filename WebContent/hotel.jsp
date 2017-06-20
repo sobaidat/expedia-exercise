@@ -10,7 +10,7 @@
 %>
 <meta http-equiv="Content-Type" content="text/html; utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><%=hotel.hotelInfo.hotelName%></title>
+<title><%=hotel.getHotelInfo().getHotelName()%></title>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css" />
@@ -22,11 +22,11 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h4><%=hotel.hotelInfo.hotelName%></h4>
+			<h4><%=hotel.getHotelInfo().getHotelName()%></h4>
 		</div>
 		<hr>
 		<div class="lib-row lib-desc">
-			<%=hotel.hotelInfo.description%>
+			<%=hotel.getHotelInfo().getDescription()%>
 		</div>
 		<div id="map" style="height:400px"></div>
 		
@@ -34,7 +34,7 @@
 	
 	<script>
 function myMap() {
-	var myLatLng = {lat: <%=hotel.hotelInfo.hotelLatitude%>, lng: <%=hotel.hotelInfo.hotelLongitude%>};
+	var myLatLng = {lat: <%=hotel.getHotelInfo().getHotelLatitude()%>, lng: <%=hotel.getHotelInfo().getHotelLongitude()%>};
 	var mapTag = document.getElementById("map");
 	var mapOptions = {
 	    center: myLatLng,
@@ -47,7 +47,7 @@ function myMap() {
 	var marker = new google.maps.Marker({
 	    position: myLatLng,
 	    map: map,
-	    title: '<%=hotel.hotelInfo.hotelStreetAddress%>'
+	    title: '<%=hotel.getHotelInfo().getHotelStreetAddress()%>'
 	  });
 
 }

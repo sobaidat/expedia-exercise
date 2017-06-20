@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 /**
- * a singleton class to read properties file
- * @author Sulaiman-PC
+ * a singleton class to read properties files
+ * @author sleman.obaidat@gmail.com
  *
  */
 public class PropertiesManager {

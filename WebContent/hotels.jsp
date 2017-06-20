@@ -136,27 +136,27 @@ body {
 	                <div class="lib-panel">
 	                    <div class="row box-shadow">
 	                        <div class="col-md-4">
-	                         <span class="badge" style="margin:10px"><%=hotel.hotelPricingInfo.averagePriceValue + " " + hotel.hotelPricingInfo.currency %></span>	
+	                         <span class="badge" style="margin:10px"><%=hotel.getHotelPricingInfo().getAveragePriceValue() + " " + hotel.getHotelPricingInfo().getCurrency() %></span>	
 	                           
-	                            <img  class="lib-img-show" src="<%= StringUtil.isNullOrEmpty(hotel.hotelInfo.hotelImageUrl) ? "/expedia-exercise/images/placeholder.png" :  hotel.hotelInfo.hotelImageUrl %>">
+	                            <img  class="lib-img-show" src="<%= StringUtil.isNullOrEmpty(hotel.getHotelInfo().getHotelImageUrl()) ? "/expedia-exercise/images/placeholder.png" :  hotel.getHotelInfo().getHotelImageUrl() %>">
 	                        </div>
 	                        <div class="col-md-8">
 	                            <div class="lib-row lib-header">
-	                                <a target="_blank" href="/expedia-exercise/Hotel?hotelId=<%=hotel.hotelInfo.hotelId%>"><%=hotel.hotelInfo.hotelName %></a>	                                                                	                                
+	                                <a target="_blank" href="/expedia-exercise/Hotel?hotelId=<%=hotel.getHotelInfo().getHotelId()%>"><%=hotel.getHotelInfo().getHotelName() %></a>	                                                                	                                
 	                            </div>	                            
 	                            <div class="lib-row lib-desc">
-	                               		<%=hotel.hotelInfo.hotelLongDestination %>
+	                               		<%=hotel.getHotelInfo().getHotelLongDestination() %>
 	                            </div>
 	                            <hr>
 	                            <div class="lib-row">
 				                    <div class="col-xs-12 text-center">
-				                        <h4 class="rating-num"><%=hotel.hotelInfo.hotelStarRating %></h4>
+				                        <h4 class="rating-num"><%=hotel.getHotelInfo().getHotelStarRating() %></h4>
 				                        <div class="rating">
 				                        	<%
 				                        		String[] starArr=null;
 				                        		int stars = 0;
-				                        		if(! StringUtil.isNullOrEmpty(hotel.hotelInfo.hotelStarRating)){				                        			
-			                        				starArr = hotel.hotelInfo.hotelStarRating.split("\\.");
+				                        		if(! StringUtil.isNullOrEmpty(hotel.getHotelInfo().getHotelStarRating())){				                        			
+			                        				starArr = hotel.getHotelInfo().getHotelStarRating().split("\\.");
 			                        				stars = Integer.parseInt(starArr[0]);				                        			
 				                        		}
 				                        		
@@ -171,8 +171,8 @@ body {
 				                    </div>
 				                  </div>
 				                  <div class="lib-row lib-desc">
-	                                <%=hotel.hotelInfo.description.length() <= 100 ? hotel.hotelInfo.description :
-	                                	hotel.hotelInfo.description.substring(0,100) +"..."
+	                                <%=hotel.getHotelInfo().getDescription().length() <= 100 ? hotel.getHotelInfo().getDescription() :
+	                                	hotel.getHotelInfo().getDescription().substring(0,100) +"..."
 	                                %>
 	                              </div>	                            
 	                        </div>

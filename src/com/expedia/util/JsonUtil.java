@@ -9,21 +9,49 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+/**
+ * a util class to aid json basic operations
+ * @author sleman.obaidat@gmail.com
+ *
+ */
 public class JsonUtil {
+	/**
+	 * Convert the passed json string to JsonObject object
+	 * @param jsonString
+	 * @return JsonObject
+	 */
 	public static JsonObject toJsonObject(String jsonString) {
 		JsonParser parser = new JsonParser();
 		return (JsonObject) parser.parse(jsonString);
 	}
 
+	/**
+	 * Get a JsonObject from another JsonObject by the passed objectName
+	 * @param fromObject
+	 * @param objectName
+	 * @return JsonObject
+	 */
 	public static JsonObject getJsonObject(JsonObject fromObject, String objectName) {
 		return fromObject.get(objectName).getAsJsonObject();
 	}
 	
+	/**
+	 * Get a JsonArray  from JsonObject by the passed objectArrayName
+	 * @param fromObject
+	 * @param objectArrayName
+	 * @return JsonArray
+	 */
 	public static JsonArray getJsonArray(JsonObject fromObject, String objectArrayName){
 		return fromObject.get(objectArrayName).getAsJsonArray();
 	}
 	
-	public static <E> List<E> getListOfObjects(JsonArray jsonArray, Class objClass){
+	/**
+	 * a generic method to get all object of the type objClass from jsonArray
+	 * @param jsonArray
+	 * @param objClass
+	 * @return list of objects of type objClass
+	 */
+	public static <E> List<E> getListOfObjects(JsonArray jsonArray, Class<E> objClass){
 		Gson gson = new Gson();
 		List<E> listOfObjects = new ArrayList<E>();
 		

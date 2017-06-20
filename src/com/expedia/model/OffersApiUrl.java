@@ -4,25 +4,28 @@ import java.util.HashSet;
 
 /**
  * a model class to hold api request configurations
- * 
- * @author Sulaiman-PC
+ * these configurations will be read from apiconfig.properties on server instance initialized
+ * @author sleman.obaidat@gmail.com
  *
  */
-public class HotelsApiUrl {
-	private String baseUrl;
+public class OffersApiUrl {
+	private String baseUrl; //holds the base api url (ex: https://offersvc.expedia.com/offers/v2/getOffers)
 	private String scenario;
 	private String page;
 	private String uid;
 	private String productType;
-	private String other;
-	private HashSet<String> allowedParameters;
+	private String other; // this will contains the passed parameters on get query
 	
-	public HashSet<String> getAllowedParameters() {
-		return allowedParameters;
+	//the purpose of this set is to hold a list of parameter names that can be passed on api url request so any other parameters will be ignored
+	//we can add parameters on apiconfig.properties
+	private HashSet<String> validParameters;
+	
+	public HashSet<String> getValidParameters() {
+		return validParameters;
 	}
 
-	public void setAllowedParameters(HashSet<String> allowedParameters) {
-		this.allowedParameters = allowedParameters;
+	public void setValidParameters(HashSet<String> validParameters) {
+		this.validParameters = validParameters;
 	}
 
 	public String getBaseUrl() {
